@@ -50,7 +50,7 @@ def from_b_s(b: list[int], s: list[int]) -> Ruleset2D:
         conf = '0' * (9 - len(conf)) + conf
         configuration = tuple(map(int, conf))
 
-        if configuration[4]:  # If the center cell is alive
+        if configuration[4] == 1:  # If the center cell is alive
             count = sum(configuration) - 1
             if count in s:
                 rule_list.append(1)  # The center cell lives
