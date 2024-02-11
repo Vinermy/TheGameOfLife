@@ -30,8 +30,8 @@ automata = CellularAutomata2D(size=(19, 19), do_wrap=False, ruleset=rules,
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ])
 
-for i in range(20):
+for i in range(200):
     os.system('cls')
     automata.display()
     automata.step()
-    time.sleep(0.5)
+    time.sleep(0.05)
