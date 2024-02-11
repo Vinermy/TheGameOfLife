@@ -36,6 +36,7 @@ class CellularAutomata2D(object):
 
         self.field = field
 
+
     def __init__(self, size: tuple[int, int], do_wrap: bool,
                  ruleset: Ruleset2D, field: list[list]) -> None:
         """
