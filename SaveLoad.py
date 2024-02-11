@@ -85,3 +85,30 @@ def load_from_file(filename):
     return output
 
 
+def save_file(pattern, filename):
+
+    line = f'x = {pattern["parameters"]["x"]}, y = {pattern["parameters"]["y"]}, ' +\
+        f'rule = B{"".join(list(map(str, pattern["parameters"]["b"])))}/S{"".join(list(map(str, pattern["parameters"]["s"])))}'
+
+    output = ['#N ' + pattern['name'], '#O ' + pattern['author'], '#C ' + pattern['description'], line]
+
+    matrix = ''
+    count = 0
+    last = True
+
+    for k in pattern['pattern']:
+        for i in k:
+            if i == last:
+                count += 1
+            else:
+                if count == 1:
+                    matrix += 'o' if i else 'b'
+                else:
+                    matrix += f'{count}o' if i else f'{count}b'
+                count = 0
+                last = bool(i)
+        matrix += '$'
+    matrix += '!'
+    output.append(matrix)
+    with open(filename, 'w') as f:
+        f.writelines(output)
